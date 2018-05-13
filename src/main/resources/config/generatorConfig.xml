@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--<classPathEntry  location="mysql-connector-java-5.1.21.jar"/>-->
+    <context id="testTables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="trues" />
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/huaian"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="com.kim.model" targetProject=".\src">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="com.kim.mapper" targetProject=".\src">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.kim.mapper" targetProject=".\src">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+        <!-- 指定数据库表 -->
+        <table tableName="fct_customer_contract"
+               domainObjectName="FctCustomerContract"
+               enableCountByExample="false"
+               enableUpdateByExample="true"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
+    </context>
+</generatorConfiguration>
